@@ -1,0 +1,1802 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SONABIO — La Beauté Naturelle du Maroc</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    /* =============================================
+       CSS VARIABLES & RESET
+    ============================================= */
+    :root {
+      --green-dark:   #2d4a2d;
+      --green-mid:    #4a7a4a;
+      --green-light:  #7ab57a;
+      --green-pale:   #e8f0e8;
+      --beige:        #f5f0e8;
+      --beige-dark:   #e8dfc8;
+      --beige-deep:   #c8b898;
+      --white:        #ffffff;
+      --text-dark:    #1a2a1a;
+      --text-mid:     #4a5a4a;
+      --text-light:   #8a9a8a;
+      --gold:         #c8a84a;
+      --shadow-sm:    0 2px 12px rgba(45,74,45,.08);
+      --shadow-md:    0 8px 32px rgba(45,74,45,.14);
+      --shadow-lg:    0 20px 60px rgba(45,74,45,.18);
+      --radius-sm:    6px;
+      --radius-md:    14px;
+      --radius-lg:    28px;
+      --transition:   all .35s cubic-bezier(.4,0,.2,1);
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body:    'Jost', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text-dark);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a  { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    button { cursor: pointer; border: none; background: none; font-family: var(--font-body); }
+
+    /* =============================================
+       UTILITY
+    ============================================= */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section-label {
+      font-family: var(--font-body);
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--green-mid);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--green-dark);
+    }
+    .section-title em { font-style: italic; color: var(--green-mid); }
+    .btn-primary {
+      display: inline-block;
+      padding: 14px 36px;
+      background: var(--green-dark);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      border-radius: 50px;
+      transition: var(--transition);
+    }
+    .btn-primary:hover {
+      background: var(--green-mid);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .btn-outline {
+      display: inline-block;
+      padding: 13px 34px;
+      border: 1.5px solid var(--green-dark);
+      color: var(--green-dark);
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      border-radius: 50px;
+      transition: var(--transition);
+    }
+    .btn-outline:hover {
+      background: var(--green-dark);
+      color: var(--white);
+    }
+
+    /* =============================================
+       HEADER / NAVBAR
+    ============================================= */
+    #header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 0;
+      transition: var(--transition);
+    }
+    #header.scrolled {
+      background: rgba(255,255,255,.96);
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(8px);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+      padding: 0 40px;
+    }
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.9rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      color: var(--white);
+      transition: var(--transition);
+    }
+    #header.scrolled .logo { color: var(--green-dark); }
+    .logo span { color: var(--gold); }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+    }
+    .nav-links a {
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.9);
+      position: relative;
+      padding-bottom: 4px;
+      transition: var(--transition);
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1.5px;
+      background: var(--gold);
+      transition: width .3s ease;
+    }
+    .nav-links a:hover::after,
+    .nav-links a.active::after { width: 100%; }
+    .nav-links a:hover { color: var(--white); }
+    #header.scrolled .nav-links a { color: var(--text-mid); }
+    #header.scrolled .nav-links a:hover { color: var(--green-dark); }
+    .header-actions { display: flex; align-items: center; gap: 20px; }
+    .cart-btn {
+      position: relative;
+      font-size: 1.1rem;
+      color: rgba(255,255,255,.9);
+      transition: var(--transition);
+    }
+    #header.scrolled .cart-btn { color: var(--green-dark); }
+    .cart-btn:hover { color: var(--gold); transform: scale(1.1); }
+    .cart-count {
+      position: absolute;
+      top: -8px; right: -8px;
+      width: 18px; height: 18px;
+      background: var(--gold);
+      color: var(--white);
+      font-size: .65rem;
+      font-weight: 600;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--white);
+      transition: var(--transition);
+      border-radius: 2px;
+    }
+    #header.scrolled .hamburger span { background: var(--green-dark); }
+
+    /* =============================================
+       HERO
+    ============================================= */
+    #hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(160deg, rgba(45,74,45,.72) 0%, rgba(74,122,74,.45) 50%, rgba(200,184,152,.3) 100%),
+        url('https://images.unsplash.com/photo-1609952048180-7b35ea6b083b?w=1600&auto=format&fit=crop') center/cover no-repeat;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 30%, rgba(10,20,10,.4) 100%);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      padding: 0 24px;
+      animation: fadeUp .9s ease both;
+    }
+    .hero-badge {
+      display: inline-block;
+      padding: 7px 20px;
+      border: 1px solid rgba(255,255,255,.5);
+      border-radius: 50px;
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.85);
+      margin-bottom: 28px;
+      backdrop-filter: blur(4px);
+      background: rgba(255,255,255,.1);
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .hero-title em {
+      font-style: italic;
+      display: block;
+      color: rgba(255,255,255,.85);
+    }
+    .hero-sub {
+      font-size: .95rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(255,255,255,.8);
+      max-width: 480px;
+      margin: 0 auto 44px;
+    }
+    .hero-cta { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-hero {
+      padding: 16px 42px;
+      background: var(--white);
+      color: var(--green-dark);
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      border-radius: 50px;
+      transition: var(--transition);
+    }
+    .btn-hero:hover {
+      background: var(--gold);
+      color: var(--white);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,0,0,.25);
+    }
+    .btn-hero-outline {
+      padding: 15px 40px;
+      border: 1.5px solid rgba(255,255,255,.7);
+      color: var(--white);
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      border-radius: 50px;
+      transition: var(--transition);
+      backdrop-filter: blur(4px);
+    }
+    .btn-hero-outline:hover {
+      background: rgba(255,255,255,.15);
+      border-color: var(--white);
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px; left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,.6);
+      font-size: .65rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      animation: bounce 2s infinite;
+    }
+    .hero-scroll i { font-size: 1rem; }
+    .hero-stats {
+      position: absolute;
+      bottom: 60px; right: 60px;
+      z-index: 2;
+      display: flex;
+      gap: 32px;
+    }
+    .stat-item {
+      text-align: center;
+      color: var(--white);
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 600;
+      display: block;
+    }
+    .stat-label {
+      font-size: .65rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      opacity: .75;
+    }
+
+    /* =============================================
+       MARQUEE STRIP
+    ============================================= */
+    .marquee-strip {
+      background: var(--green-dark);
+      padding: 16px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-track {
+      display: inline-flex;
+      animation: marquee 22s linear infinite;
+    }
+    .marquee-track span {
+      display: inline-block;
+      padding: 0 32px;
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.75);
+    }
+    .marquee-track span i {
+      color: var(--gold);
+      margin: 0 8px;
+    }
+
+    /* =============================================
+       FEATURED PRODUCTS
+    ============================================= */
+    #produits {
+      padding: 100px 0;
+      background: var(--white);
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .product-card {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+    .product-img-wrap {
+      position: relative;
+      overflow: hidden;
+      height: 300px;
+      background: var(--beige);
+    }
+    .product-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s cubic-bezier(.4,0,.2,1);
+    }
+    .product-card:hover .product-img-wrap img {
+      transform: scale(1.07);
+    }
+    .product-badge {
+      position: absolute;
+      top: 16px; left: 16px;
+      padding: 5px 14px;
+      background: var(--green-dark);
+      color: var(--white);
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      border-radius: 50px;
+      z-index: 2;
+    }
+    .product-badge.new { background: var(--gold); }
+    .product-badge.promo { background: #c0392b; }
+    .product-actions {
+      position: absolute;
+      top: 16px; right: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      opacity: 0;
+      transform: translateX(10px);
+      transition: var(--transition);
+      z-index: 2;
+    }
+    .product-card:hover .product-actions { opacity: 1; transform: translateX(0); }
+    .action-btn {
+      width: 38px; height: 38px;
+      background: var(--white);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .85rem;
+      color: var(--green-dark);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+    .action-btn:hover { background: var(--green-dark); color: var(--white); }
+    .product-info {
+      padding: 22px;
+    }
+    .product-category {
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--green-light);
+      margin-bottom: 8px;
+    }
+    .product-name {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--green-dark);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .product-desc {
+      font-size: .8rem;
+      color: var(--text-light);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .product-price {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--green-dark);
+    }
+    .product-price .old {
+      font-size: .9rem;
+      text-decoration: line-through;
+      color: var(--text-light);
+      font-weight: 300;
+      margin-left: 6px;
+    }
+    .add-cart-btn {
+      padding: 10px 22px;
+      background: var(--green-dark);
+      color: var(--white);
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      border-radius: 50px;
+      transition: var(--transition);
+    }
+    .add-cart-btn:hover { background: var(--green-mid); transform: scale(1.04); }
+    .add-cart-btn.added { background: var(--gold); }
+    .product-stars { display: flex; gap: 3px; margin-bottom: 6px; }
+    .product-stars i { font-size: .7rem; color: var(--gold); }
+
+    /* =============================================
+       CATEGORIES
+    ============================================= */
+    #categories {
+      padding: 80px 0;
+      background: var(--beige);
+    }
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .cat-card {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      height: 360px;
+      cursor: pointer;
+    }
+    .cat-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s cubic-bezier(.4,0,.2,1);
+    }
+    .cat-card:hover img { transform: scale(1.1); }
+    .cat-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(45,74,45,.85) 0%, rgba(45,74,45,.2) 60%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 32px;
+      transition: var(--transition);
+    }
+    .cat-card:hover .cat-overlay {
+      background: linear-gradient(to top, rgba(45,74,45,.92) 0%, rgba(45,74,45,.35) 60%, transparent 100%);
+    }
+    .cat-name {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .cat-count {
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.7);
+      margin-bottom: 20px;
+    }
+    .cat-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--white);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: var(--transition);
+    }
+    .cat-card:hover .cat-link { opacity: 1; transform: translateY(0); }
+    .cat-link i { font-size: .8rem; transition: transform .3s ease; }
+    .cat-link:hover i { transform: translateX(4px); }
+
+    /* =============================================
+       NOTRE HISTOIRE
+    ============================================= */
+    #histoire {
+      padding: 100px 0;
+      background: var(--white);
+    }
+    .histoire-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .histoire-imgs {
+      position: relative;
+    }
+    .histoire-img-main {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      height: 500px;
+    }
+    .histoire-img-main img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .histoire-img-float {
+      position: absolute;
+      bottom: -30px; right: -30px;
+      width: 200px; height: 200px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 6px solid var(--white);
+      box-shadow: var(--shadow-md);
+    }
+    .histoire-img-float img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .histoire-badge {
+      position: absolute;
+      top: -20px; left: -20px;
+      width: 100px; height: 100px;
+      background: var(--green-dark);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      box-shadow: var(--shadow-md);
+    }
+    .histoire-badge strong {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 600;
+      line-height: 1;
+    }
+    .histoire-badge span {
+      font-size: .58rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      opacity: .8;
+      text-align: center;
+    }
+    .histoire-text { padding-right: 20px; }
+    .histoire-text p {
+      font-size: .95rem;
+      line-height: 1.8;
+      color: var(--text-mid);
+      margin-bottom: 20px;
+    }
+    .histoire-text blockquote {
+      border-left: 3px solid var(--gold);
+      padding-left: 24px;
+      margin: 28px 0;
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--green-dark);
+      line-height: 1.5;
+    }
+    .histoire-values {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .val-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .82rem;
+      font-weight: 500;
+      color: var(--text-mid);
+    }
+    .val-item i { color: var(--green-mid); font-size: .9rem; }
+
+    /* =============================================
+       POURQUOI NOUS
+    ============================================= */
+    #pourquoi {
+      padding: 100px 0;
+      background: var(--green-dark);
+    }
+    #pourquoi .section-label { color: rgba(255,255,255,.6); }
+    #pourquoi .section-title { color: var(--white); }
+    #pourquoi .section-title em { color: rgba(200,168,74,.9); }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      margin-top: 60px;
+    }
+    .feature-card {
+      padding: 40px 28px;
+      background: rgba(255,255,255,.07);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255,255,255,.1);
+      text-align: center;
+      transition: var(--transition);
+    }
+    .feature-card:hover {
+      background: rgba(255,255,255,.12);
+      transform: translateY(-6px);
+      border-color: rgba(200,168,74,.4);
+    }
+    .feature-icon {
+      width: 70px; height: 70px;
+      margin: 0 auto 24px;
+      background: rgba(200,168,74,.15);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      color: var(--gold);
+      border: 1px solid rgba(200,168,74,.3);
+      transition: var(--transition);
+    }
+    .feature-card:hover .feature-icon {
+      background: var(--gold);
+      color: var(--white);
+    }
+    .feature-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .feature-desc {
+      font-size: .82rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,.6);
+    }
+
+    /* =============================================
+       AVIS CLIENTS
+    ============================================= */
+    #avis {
+      padding: 100px 0;
+      background: var(--beige);
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 56px;
+    }
+    .review-card {
+      padding: 36px 32px;
+      background: var(--white);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      position: relative;
+    }
+    .review-card::before {
+      content: '"';
+      position: absolute;
+      top: 20px; right: 24px;
+      font-family: var(--font-display);
+      font-size: 6rem;
+      color: var(--green-pale);
+      line-height: 1;
+      pointer-events: none;
+    }
+    .review-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+    }
+    .review-stars {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 18px;
+    }
+    .review-stars i { font-size: .8rem; color: var(--gold); }
+    .review-text {
+      font-size: .9rem;
+      line-height: 1.75;
+      color: var(--text-mid);
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .review-avatar {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--beige-dark);
+    }
+    .review-name {
+      font-weight: 600;
+      font-size: .85rem;
+      color: var(--green-dark);
+    }
+    .review-location {
+      font-size: .72rem;
+      color: var(--text-light);
+      margin-top: 2px;
+    }
+
+    /* =============================================
+       GALERIE LIFESTYLE
+    ============================================= */
+    #galerie {
+      padding: 100px 0;
+      background: var(--white);
+    }
+    .galerie-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 200px 200px;
+      gap: 16px;
+      margin-top: 56px;
+    }
+    .galerie-item {
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+    }
+    .galerie-item:first-child {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+    .galerie-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+    .galerie-item:hover img { transform: scale(1.08); }
+    .galerie-item-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(45,74,45,.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .galerie-item:hover .galerie-item-overlay { opacity: 1; }
+    .galerie-item-overlay i { font-size: 1.5rem; color: var(--white); }
+
+    /* =============================================
+       NEWSLETTER
+    ============================================= */
+    #newsletter {
+      padding: 90px 0;
+      background: var(--green-pale);
+      position: relative;
+      overflow: hidden;
+    }
+    #newsletter::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(122,181,122,.25), transparent 70%);
+      border-radius: 50%;
+    }
+    #newsletter::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: -60px;
+      width: 250px; height: 250px;
+      background: radial-gradient(circle, rgba(200,168,74,.15), transparent 70%);
+      border-radius: 50%;
+    }
+    .newsletter-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+    .newsletter-inner .section-title { margin-bottom: 14px; }
+    .newsletter-sub {
+      font-size: .9rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+    .newsletter-form {
+      display: flex;
+      gap: 12px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .newsletter-input {
+      flex: 1;
+      padding: 15px 22px;
+      border: 1.5px solid var(--beige-dark);
+      border-radius: 50px;
+      font-family: var(--font-body);
+      font-size: .85rem;
+      background: var(--white);
+      color: var(--text-dark);
+      outline: none;
+      transition: var(--transition);
+    }
+    .newsletter-input:focus { border-color: var(--green-mid); box-shadow: 0 0 0 3px rgba(74,122,74,.1); }
+    .newsletter-input::placeholder { color: var(--text-light); }
+    .newsletter-success {
+      display: none;
+      padding: 14px 28px;
+      background: var(--green-dark);
+      color: var(--white);
+      border-radius: 50px;
+      font-size: .82rem;
+      margin-top: 16px;
+    }
+
+    /* =============================================
+       CART NOTIFICATION
+    ============================================= */
+    .toast {
+      position: fixed;
+      top: 100px; right: 24px;
+      z-index: 9999;
+      background: var(--green-dark);
+      color: var(--white);
+      padding: 16px 24px;
+      border-radius: var(--radius-sm);
+      font-size: .85rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: var(--shadow-lg);
+      transform: translateX(120%);
+      transition: transform .4s cubic-bezier(.4,0,.2,1);
+    }
+    .toast.show { transform: translateX(0); }
+    .toast i { color: var(--gold); }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    #footer {
+      background: var(--text-dark);
+      color: var(--white);
+      padding: 72px 0 0;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 48px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .footer-brand .logo { color: var(--white); margin-bottom: 18px; display: block; }
+    .footer-brand p {
+      font-size: .85rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,.55);
+      max-width: 280px;
+      margin-bottom: 28px;
+    }
+    .social-links {
+      display: flex;
+      gap: 12px;
+    }
+    .social-link {
+      width: 38px; height: 38px;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .85rem;
+      color: rgba(255,255,255,.6);
+      transition: var(--transition);
+    }
+    .social-link:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--white);
+      transform: translateY(-3px);
+    }
+    .footer-col h4 {
+      font-family: var(--font-body);
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 22px;
+    }
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+    .footer-col ul li a {
+      font-size: .85rem;
+      color: rgba(255,255,255,.5);
+      transition: var(--transition);
+    }
+    .footer-col ul li a:hover {
+      color: var(--white);
+      padding-left: 6px;
+    }
+    .footer-contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .footer-contact-item i {
+      color: var(--gold);
+      font-size: .85rem;
+      margin-top: 2px;
+    }
+    .footer-contact-item span {
+      font-size: .83rem;
+      color: rgba(255,255,255,.55);
+      line-height: 1.5;
+    }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0;
+    }
+    .footer-copy {
+      font-size: .75rem;
+      color: rgba(255,255,255,.35);
+    }
+    .footer-copy span { color: var(--gold); }
+    .footer-pay {
+      display: flex;
+      gap: 10px;
+    }
+    .pay-icon {
+      width: 42px; height: 26px;
+      background: rgba(255,255,255,.1);
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .6rem;
+      color: rgba(255,255,255,.5);
+      font-weight: 600;
+      letter-spacing: .05em;
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--green-dark);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: .08em;
+      transition: var(--transition);
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-close {
+      position: absolute;
+      top: 28px; right: 32px;
+      font-size: 1.8rem;
+      color: var(--white);
+      cursor: pointer;
+    }
+
+    /* =============================================
+       ANIMATIONS
+    ============================================= */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(8px); }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* =============================================
+       RESPONSIVE
+    ============================================= */
+    @media (max-width: 1024px) {
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid   { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 768px) {
+      .header-inner { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero-stats { display: none; }
+      .products-grid { grid-template-columns: 1fr; }
+      .categories-grid { grid-template-columns: 1fr; }
+      .histoire-inner { grid-template-columns: 1fr; gap: 40px; }
+      .histoire-imgs { height: 300px; }
+      .histoire-img-main { height: 300px; }
+      .histoire-img-float { display: none; }
+      .features-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .galerie-grid  {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(4, 160px);
+      }
+      .galerie-item:first-child { grid-column: span 2; grid-row: span 1; }
+      .newsletter-form { flex-direction: column; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; gap: 14px; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .features-grid { grid-template-columns: 1fr; }
+      .histoire-values { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toast-msg">Produit ajouté au panier !</span>
+  </div>
+
+  <!-- MOBILE MENU -->
+  <nav class="mobile-menu" id="mobile-menu">
+    <i class="fas fa-times mobile-close" id="mobile-close"></i>
+    <a href="#accueil" class="mob-link">Accueil</a>
+    <a href="#produits" class="mob-link">Boutique</a>
+    <a href="#histoire" class="mob-link">À Propos</a>
+    <a href="#contact"  class="mob-link">Contact</a>
+  </nav>
+
+  <!-- ======== HEADER ======== -->
+  <header id="header">
+    <div class="header-inner">
+      <a href="#accueil" class="logo">SONA<span>BIO</span></a>
+      <nav class="nav-links">
+        <a href="#accueil"  class="active">Accueil</a>
+        <a href="#produits">Boutique</a>
+        <a href="#histoire">À Propos</a>
+        <a href="#contact" >Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="cart-btn" id="cart-btn" aria-label="Panier">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="cart-count" id="cart-count">0</span>
+        </button>
+        <div class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======== HERO ======== -->
+  <section id="accueil" id="hero">
+    <div id="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <div class="hero-badge"><i class="fas fa-leaf"></i> &nbsp; Cosmétiques 100% Naturels du Maroc</div>
+        <h1 class="hero-title">
+          La beauté naturelle
+          <em>commence ici</em>
+        </h1>
+        <p class="hero-sub">Des soins inspirés des trésors de la nature marocaine — argan, sidr, rose et bien plus — formulés sans compromis.</p>
+        <div class="hero-cta">
+          <a href="#produits" class="btn-hero">Découvrir nos produits</a>
+          <a href="#histoire" class="btn-hero-outline">Notre histoire</a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item"><strong class="stat-num">100%</strong><span class="stat-label">Naturel</span></div>
+        <div class="stat-item"><strong class="stat-num">+5k</strong><span class="stat-label">Clientes</span></div>
+        <div class="stat-item"><strong class="stat-num">15+</strong><span class="stat-label">Produits</span></div>
+      </div>
+      <div class="hero-scroll"><i class="fas fa-chevron-down"></i><span>Découvrir</span></div>
+    </div>
+  </section>
+
+  <!-- ======== MARQUEE ======== -->
+  <div class="marquee-strip">
+    <div class="marquee-track" id="marquee-track">
+      <span>Livraison gratuite dès 400 MAD <i class="fas fa-leaf"></i></span>
+      <span>100% Ingrédients Naturels <i class="fas fa-seedling"></i></span>
+      <span>Certifié Bio & Vegan <i class="fas fa-check-circle"></i></span>
+      <span>Fabrication Artisanale Marocaine <i class="fas fa-star"></i></span>
+      <span>Satisfait ou Remboursé 30 jours <i class="fas fa-shield-alt"></i></span>
+      <span>Livraison gratuite dès 400 MAD <i class="fas fa-leaf"></i></span>
+      <span>100% Ingrédients Naturels <i class="fas fa-seedling"></i></span>
+      <span>Certifié Bio & Vegan <i class="fas fa-check-circle"></i></span>
+      <span>Fabrication Artisanale Marocaine <i class="fas fa-star"></i></span>
+      <span>Satisfait ou Remboursé 30 jours <i class="fas fa-shield-alt"></i></span>
+    </div>
+  </div>
+
+  <!-- ======== PRODUITS EN VEDETTE ======== -->
+  <section id="produits">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Notre Sélection</p>
+        <h2 class="section-title">Produits en <em>Vedette</em></h2>
+      </div>
+      <div class="products-grid">
+
+        <!-- Produit 1 -->
+        <div class="product-card reveal">
+          <div class="product-img-wrap">
+            <span class="product-badge new">Nouveau</span>
+            <div class="product-actions">
+              <button class="action-btn" title="Favoris"><i class="far fa-heart"></i></button>
+              <button class="action-btn" title="Aperçu"><i class="far fa-eye"></i></button>
+            </div>
+            <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=600&auto=format&fit=crop" alt="Huile d'Argan Pure"/>
+          </div>
+          <div class="product-info">
+            <p class="product-category">Huiles Naturelles</p>
+            <div class="product-stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <h3 class="product-name">Huile d'Argan Pure BIO</h3>
+            <p class="product-desc">Extraite à froid des amandons d'arganier, riche en vitamine E et acides gras essentiels.</p>
+            <div class="product-footer">
+              <div class="product-price">189 MAD<span class="old">230 MAD</span></div>
+              <button class="add-cart-btn" data-name="Huile d'Argan Pure BIO" data-price="189">Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Produit 2 -->
+        <div class="product-card reveal">
+          <div class="product-img-wrap">
+            <span class="product-badge">Bestseller</span>
+            <div class="product-actions">
+              <button class="action-btn" title="Favoris"><i class="far fa-heart"></i></button>
+              <button class="action-btn" title="Aperçu"><i class="far fa-eye"></i></button>
+            </div>
+            <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=600&auto=format&fit=crop" alt="Masque au Ghassoul"/>
+          </div>
+          <div class="product-info">
+            <p class="product-category">Soins Visage</p>
+            <div class="product-stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            </div>
+            <h3 class="product-name">Masque Argile Ghassoul</h3>
+            <p class="product-desc">Argile marocaine purifiante mélangée aux eaux florales de rose et d'orange.</p>
+            <div class="product-footer">
+              <div class="product-price">145 MAD</div>
+              <button class="add-cart-btn" data-name="Masque Argile Ghassoul" data-price="145">Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Produit 3 -->
+        <div class="product-card reveal">
+          <div class="product-img-wrap">
+            <span class="product-badge promo">–20%</span>
+            <div class="product-actions">
+              <button class="action-btn" title="Favoris"><i class="far fa-heart"></i></button>
+              <button class="action-btn" title="Aperçu"><i class="far fa-eye"></i></button>
+            </div>
+            <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=600&auto=format&fit=crop" alt="Beurre de Karité"/>
+          </div>
+          <div class="product-info">
+            <p class="product-category">Soins Corps</p>
+            <div class="product-stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <h3 class="product-name">Beurre de Karité Whippé</h3>
+            <p class="product-desc">Karité non raffiné à texture légère, enrichi de lavande et de camomille naturelle.</p>
+            <div class="product-footer">
+              <div class="product-price">120 MAD<span class="old">149 MAD</span></div>
+              <button class="add-cart-btn" data-name="Beurre de Karité Whippé" data-price="120">Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Produit 4 -->
+        <div class="product-card reveal">
+          <div class="product-img-wrap">
+            <div class="product-actions">
+              <button class="action-btn" title="Favoris"><i class="far fa-heart"></i></button>
+              <button class="action-btn" title="Aperçu"><i class="far fa-eye"></i></button>
+            </div>
+            <img src="https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=600&auto=format&fit=crop" alt="Savon au Lait d'Ânesse"/>
+          </div>
+          <div class="product-info">
+            <p class="product-category">Soins Visage</p>
+            <div class="product-stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <i class="fas fa-star"></i><i class="far fa-star"></i>
+            </div>
+            <h3 class="product-name">Savon Naturel au Miel & Sidr</h3>
+            <p class="product-desc">Savon artisanal formule douce au miel de Sidr et huile d'olive pressée à froid.</p>
+            <div class="product-footer">
+              <div class="product-price">65 MAD</div>
+              <button class="add-cart-btn" data-name="Savon Naturel au Miel & Sidr" data-price="65">Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Produit 5 -->
+        <div class="product-card reveal">
+          <div class="product-img-wrap">
+            <span class="product-badge new">Nouveau</span>
+            <div class="product-actions">
+              <button class="action-btn" title="Favoris"><i class="far fa-heart"></i></button>
+              <button class="action-btn" title="Aperçu"><i class="far fa-eye"></i></button>
+            </div>
+            <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=600&auto=format&fit=crop" alt="Sérum Éclat Rose"/>
+          </div>
+          <div class="product-info">
+            <p class="product-category">Soins Visage</p>
+            <div class="product-stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <h3 class="product-name">Sérum Éclat à l'Eau de Rose</h3>
+            <p class="product-desc">Concentré de rose de Kelâa, acide hyaluronique végétal et huile de romarin.</p>
+            <div class="product-footer">
+              <div class="product-price">210 MAD</div>
+              <button class="add-cart-btn" data-name="Sérum Éclat à l'Eau de Rose" data-price="210">Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Produit 6 -->
+        <div class="product-card reveal">
+          <div class="product-img-wrap">
+            <span class="product-badge">Kit</span>
+            <div class="product-actions">
+              <button class="action-btn" title="Favoris"><i class="far fa-heart"></i></button>
+              <button class="action-btn" title="Aperçu"><i class="far fa-eye"></i></button>
+            </div>
+            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&auto=format&fit=crop" alt="Pack Soin Complet"/>
+          </div>
+          <div class="product-info">
+            <p class="product-category">Packs Beauté</p>
+            <div class="product-stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            </div>
+            <h3 class="product-name">Pack Rituel Beauté Marocain</h3>
+            <p class="product-desc">5 produits essentiels pour un rituel complet : savon beldi, huile, ghassoul, kessoul & lotion.</p>
+            <div class="product-footer">
+              <div class="product-price">389 MAD<span class="old">480 MAD</span></div>
+              <button class="add-cart-btn" data-name="Pack Rituel Beauté Marocain" data-price="389">Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div style="text-align:center;margin-top:48px;" class="reveal">
+        <a href="#" class="btn-outline">Voir tous les produits &nbsp;<i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== CATEGORIES ======== -->
+  <section id="categories">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Explorer par univers</p>
+        <h2 class="section-title">Nos <em>Catégories</em></h2>
+      </div>
+      <div class="categories-grid">
+        <div class="cat-card reveal">
+          <img src="https://images.unsplash.com/photo-1519415943484-9fa1873496d4?w=700&auto=format&fit=crop" alt="Soins Cheveux"/>
+          <div class="cat-overlay">
+            <h3 class="cat-name">Soins Cheveux</h3>
+            <p class="cat-count">8 produits</p>
+            <a href="#" class="cat-link">Découvrir <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="cat-card reveal">
+          <img src="https://images.unsplash.com/photo-1565008576549-57569a49371d?w=700&auto=format&fit=crop" alt="Huiles Naturelles"/>
+          <div class="cat-overlay">
+            <h3 class="cat-name">Huiles Naturelles</h3>
+            <p class="cat-count">6 produits</p>
+            <a href="#" class="cat-link">Découvrir <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="cat-card reveal">
+          <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=700&auto=format&fit=crop" alt="Packs Beauté"/>
+          <div class="cat-overlay">
+            <h3 class="cat-name">Packs Beauté</h3>
+            <p class="cat-count">4 kits complets</p>
+            <a href="#" class="cat-link">Découvrir <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== NOTRE HISTOIRE ======== -->
+  <section id="histoire">
+    <div class="container">
+      <div class="histoire-inner">
+        <div class="histoire-imgs reveal">
+          <div class="histoire-badge">
+            <strong>2018</strong>
+            <span>Fondée avec<br>passion</span>
+          </div>
+          <div class="histoire-img-main">
+            <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&auto=format&fit=crop" alt="Notre histoire"/>
+          </div>
+          <div class="histoire-img-float">
+            <img src="https://images.unsplash.com/photo-1473261422289-ece70cf625d3?w=400&auto=format&fit=crop" alt="Plantes naturelles"/>
+          </div>
+        </div>
+        <div class="histoire-text reveal">
+          <p class="section-label">Notre Histoire</p>
+          <h2 class="section-title" style="margin-bottom:28px;">Des racines <em>marocaines</em>, une vision moderne</h2>
+          <p>SONABIO est née d'une passion profonde pour les trésors naturels du Maroc. Fondée en 2018 par une équipe de femmes passionnées de bien-être, notre marque puise son inspiration dans les rituels ancestraux des hammams marocains et la sagesse des plantes médicinales.</p>
+          <blockquote>« La nature marocaine nous offre tout ce dont la peau a besoin. Notre rôle est de l'embouteiller avec soin et amour. »</blockquote>
+          <p>Chaque produit SONABIO est conçu en collaboration avec des herboristes locaux, en respectant les savoir-faire traditionnels tout en intégrant les avancées de la cosmétique naturelle contemporaine.</p>
+          <div class="histoire-values">
+            <div class="val-item"><i class="fas fa-check-circle"></i> Ingrédients traçables</div>
+            <div class="val-item"><i class="fas fa-check-circle"></i> Production artisanale</div>
+            <div class="val-item"><i class="fas fa-check-circle"></i> Emballages éco-responsables</div>
+            <div class="val-item"><i class="fas fa-check-circle"></i> Jamais testé sur animaux</div>
+          </div>
+          <div style="margin-top:36px;">
+            <a href="#" class="btn-primary">En savoir plus</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== POURQUOI NOUS ======== -->
+  <section id="pourquoi">
+    <div class="container">
+      <div class="section-header reveal" style="text-align:center;">
+        <p class="section-label">Nos engagements</p>
+        <h2 class="section-title">Pourquoi choisir <em>SONABIO</em> ?</h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <div class="feature-icon"><i class="fas fa-leaf"></i></div>
+          <h3 class="feature-title">100% Naturel</h3>
+          <p class="feature-desc">Chaque ingrédient est sélectionné pour sa pureté. Aucun additif synthétique, colorant ou parfum artificiel.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon"><i class="fas fa-ban"></i></div>
+          <h3 class="feature-title">Sans Produits Chimiques</h3>
+          <p class="feature-desc">Formules sans parabènes, sans sulfates, sans silicones. La pureté à l'état pur pour votre peau et vos cheveux.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon"><i class="fas fa-gem"></i></div>
+          <h3 class="feature-title">Qualité Premium</h3>
+          <p class="feature-desc">Des matières premières d'exception soigneusement sourcées auprès de producteurs marocains de confiance.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+          <h3 class="feature-title">Résultats Visibles</h3>
+          <p class="feature-desc">Nos clientes constatent des résultats dès les premières semaines. Peau lumineuse, cheveux nourris, hydratation intense.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== AVIS CLIENTS ======== -->
+  <section id="avis">
+    <div class="container">
+      <div class="section-header reveal" style="text-align:center;">
+        <p class="section-label">Témoignages</p>
+        <h2 class="section-title">Ce que disent <em>nos clientes</em></h2>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card reveal">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">« L'huile d'argan SONABIO a transformé mes cheveux en seulement deux semaines. Ma coiffeuse n'en revient pas ! La texture est légère et l'odeur naturelle est absolument divine. Je ne peux plus m'en passer. »</p>
+          <div class="review-author">
+            <img class="review-avatar" src="https://images.unsplash.com/photo-1494790108755-2616b612b047?w=100&auto=format&fit=crop&crop=face" alt="Fatima"/>
+            <div>
+              <p class="review-name">Fatima B.</p>
+              <p class="review-location">Casablanca, Maroc</p>
+            </div>
+          </div>
+        </div>
+        <div class="review-card reveal">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">« Le masque au ghassoul est une révélation ! Ma peau est plus nette et lumineuse après chaque utilisation. Je suis conquise par la qualité et la transparence des ingrédients. Merci SONABIO pour ces produits exceptionnels. »</p>
+          <div class="review-author">
+            <img class="review-avatar" src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=100&auto=format&fit=crop&crop=face" alt="Yasmine"/>
+            <div>
+              <p class="review-name">Yasmine K.</p>
+              <p class="review-location">Rabat, Maroc</p>
+            </div>
+          </div>
+        </div>
+        <div class="review-card reveal">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+          </div>
+          <p class="review-text">« J'ai offert le pack rituel à ma mère et elle en est tombée amoureuse. Les produits sentent bon, sont efficaces et l'emballage est très soigné. Une marque marocaine dont on peut être fier. Je recommande à 100% ! »</p>
+          <div class="review-author">
+            <img class="review-avatar" src="https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=100&auto=format&fit=crop&crop=face" alt="Khadija"/>
+            <div>
+              <p class="review-name">Khadija M.</p>
+              <p class="review-location">Marrakech, Maroc</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== GALERIE LIFESTYLE ======== -->
+  <section id="galerie">
+    <div class="container">
+      <div class="section-header reveal" style="text-align:center;">
+        <p class="section-label">Univers SONABIO</p>
+        <h2 class="section-title">L'art du <em>soin naturel</em></h2>
+      </div>
+      <div class="galerie-grid">
+        <div class="galerie-item reveal">
+          <img src="https://images.unsplash.com/photo-1488462237308-ecaa28b729d7?w=800&auto=format&fit=crop" alt="Galerie 1"/>
+          <div class="galerie-item-overlay"><i class="fas fa-expand-arrows-alt"></i></div>
+        </div>
+        <div class="galerie-item reveal">
+          <img src="https://images.unsplash.com/photo-1600428853876-fb4ae9a1f9fd?w=400&auto=format&fit=crop" alt="Galerie 2"/>
+          <div class="galerie-item-overlay"><i class="fas fa-expand-arrows-alt"></i></div>
+        </div>
+        <div class="galerie-item reveal">
+          <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400&auto=format&fit=crop" alt="Galerie 3"/>
+          <div class="galerie-item-overlay"><i class="fas fa-expand-arrows-alt"></i></div>
+        </div>
+        <div class="galerie-item reveal">
+          <img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=400&auto=format&fit=crop" alt="Galerie 4"/>
+          <div class="galerie-item-overlay"><i class="fas fa-expand-arrows-alt"></i></div>
+        </div>
+        <div class="galerie-item reveal">
+          <img src="https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=400&auto=format&fit=crop" alt="Galerie 5"/>
+          <div class="galerie-item-overlay"><i class="fas fa-expand-arrows-alt"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== NEWSLETTER ======== -->
+  <section id="newsletter">
+    <div class="container">
+      <div class="newsletter-inner reveal">
+        <p class="section-label">Rejoignez la communauté</p>
+        <h2 class="section-title">Offres exclusives & <em>conseils beauté</em></h2>
+        <p class="newsletter-sub">Abonnez-vous à notre newsletter et recevez 10% de réduction sur votre première commande, ainsi que nos conseils beauté naturelle chaque mois.</p>
+        <div class="newsletter-form">
+          <input type="email" class="newsletter-input" id="newsletter-email" placeholder="Votre adresse email..."/>
+          <button class="btn-primary" id="newsletter-btn">S'inscrire</button>
+        </div>
+        <div class="newsletter-success" id="newsletter-success">
+          <i class="fas fa-check-circle"></i> &nbsp; Bienvenue ! Votre code promo vous a été envoyé. 🌿
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== FOOTER ======== -->
+  <footer id="footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand -->
+        <div class="footer-brand">
+          <span class="logo">SONA<span>BIO</span></span>
+          <p>Nous croyons que la nature offre ce qu'il y a de meilleur pour prendre soin de soi. Chaque produit SONABIO est une invitation à redécouvrir les rituels ancestraux marocains.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link" title="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="#" class="social-link" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#produits">Boutique</a></li>
+            <li><a href="#categories">Catégories</a></li>
+            <li><a href="#histoire">Notre Histoire</a></li>
+            <li><a href="#avis">Avis Clients</a></li>
+          </ul>
+        </div>
+
+        <!-- Aide -->
+        <div class="footer-col">
+          <h4>Aide</h4>
+          <ul>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Livraison & Retours</a></li>
+            <li><a href="#">Politique de confidentialité</a></li>
+            <li><a href="#">Conditions d'utilisation</a></li>
+            <li><a href="#">Suivi de commande</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <div class="footer-contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Rue Al Arfane, Derb Ghallef<br>Casablanca, Maroc</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-phone"></i>
+            <span>+212 6 00 00 00 00</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>contact@sonabio.ma</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-clock"></i>
+            <span>Lun–Sam : 9h – 18h</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer bottom -->
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2024 <span>SONABIO</span>. Tous droits réservés. Fait avec <span>♥</span> au Maroc.</p>
+        <div class="footer-pay">
+          <div class="pay-icon">VISA</div>
+          <div class="pay-icon">MC</div>
+          <div class="pay-icon">CMI</div>
+          <div class="pay-icon">COD</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======== JAVASCRIPT ======== -->
+  <script>
+    /* ------------------------------------------------
+       NAVBAR SCROLL EFFECT
+    ------------------------------------------------ */
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    /* ------------------------------------------------
+       MOBILE MENU
+    ------------------------------------------------ */
+    const hamburger   = document.getElementById('hamburger');
+    const mobileMenu  = document.getElementById('mobile-menu');
+    const mobileClose = document.getElementById('mobile-close');
+
+    hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
+    mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+
+    document.querySelectorAll('.mob-link').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+
+    /* ------------------------------------------------
+       CART FUNCTIONALITY
+    ------------------------------------------------ */
+    let cartCount = 0;
+    const cartCountEl = document.getElementById('cart-count');
+    const toast       = document.getElementById('toast');
+    const toastMsg    = document.getElementById('toast-msg');
+
+    function showToast(msg) {
+      toastMsg.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
+    document.querySelectorAll('.add-cart-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const name = this.dataset.name;
+        const price = this.dataset.price;
+
+        cartCount++;
+        cartCountEl.textContent = cartCount;
+
+        // Button feedback
+        const original = this.textContent;
+        this.textContent = '✓ Ajouté';
+        this.classList.add('added');
+        setTimeout(() => {
+          this.textContent = original;
+          this.classList.remove('added');
+        }, 1500);
+
+        showToast(`"${name}" ajouté au panier — ${price} MAD`);
+      });
+    });
+
+    // Cart icon click
+    document.getElementById('cart-btn').addEventListener('click', () => {
+      showToast(cartCount === 0
+        ? 'Votre panier est vide.'
+        : `Vous avez ${cartCount} article(s) dans votre panier.`
+      );
+    });
+
+    /* ------------------------------------------------
+       SCROLL REVEAL
+    ------------------------------------------------ */
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          // Stagger sibling reveals
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    reveals.forEach(el => revealObserver.observe(el));
+
+    /* ------------------------------------------------
+       SMOOTH NAV ACTIVE STATE
+    ------------------------------------------------ */
+    const sections = document.querySelectorAll('section[id], div[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(a => a.classList.remove('active'));
+          const match = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+          if (match) match.classList.add('active');
+        }
+      });
+    }, { threshold: 0.4 });
+
+    document.querySelectorAll('section[id]').forEach(s => sectionObserver.observe(s));
+
+    /* ------------------------------------------------
+       NEWSLETTER FORM
+    ------------------------------------------------ */
+    document.getElementById('newsletter-btn').addEventListener('click', () => {
+      const email = document.getElementById('newsletter-email').value.trim();
+      const success = document.getElementById('newsletter-success');
+      if (!email || !email.includes('@')) {
+        document.getElementById('newsletter-email').style.borderColor = '#c0392b';
+        setTimeout(() => document.getElementById('newsletter-email').style.borderColor = '', 2000);
+        return;
+      }
+      document.getElementById('newsletter-email').value = '';
+      success.style.display = 'block';
+      setTimeout(() => success.style.display = 'none', 5000);
+    });
+
+    /* ------------------------------------------------
+       MARQUEE CLONE (infinite loop)
+    ------------------------------------------------ */
+    const track = document.getElementById('marquee-track');
+    track.innerHTML += track.innerHTML; // duplicate
+
+    /* ------------------------------------------------
+       WISHLIST TOGGLE
+    ------------------------------------------------ */
+    document.querySelectorAll('.action-btn').forEach(btn => {
+      if (btn.title === 'Favoris') {
+        btn.addEventListener('click', function () {
+          const icon = this.querySelector('i');
+          icon.classList.toggle('far');
+          icon.classList.toggle('fas');
+          icon.style.color = icon.classList.contains('fas') ? 'var(--gold)' : '';
+        });
+      }
+    });
+  </script>
+</body>
+</html>
