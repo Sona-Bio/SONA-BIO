@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SONABIO — La Beauté Naturelle du Maroc</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toast-msg">Produit ajouté au panier !</span>
+  </div>
+
+  <!-- MOBILE MENU -->
+  <nav class="mobile-menu" id="mobile-menu">
+    <i class="fas fa-times mobile-close" id="mobile-close"></i>
+    <a href="#accueil" class="mob-link">Accueil</a>
+    <a href="#produits" class="mob-link">Boutique</a>
+    <a href="#histoire" class="mob-link">À Propos</a>
+    <a href="#contact"  class="mob-link">Contact</a>
+  </nav>
+
+  <!-- ======== HEADER ======== -->
+  <header id="header">
+    <div class="header-inner">
+      <a href="#accueil" class="logo">SONA<span>BIO</span></a>
+      <nav class="nav-links">
+        <a href="#accueil" class="active">Accueil</a>
+        <a href="#produits">Boutique</a>
+        <a href="#histoire">À Propos</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="cart-btn" id="cart-btn" aria-label="Panier">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="cart-count" id="cart-count">0</span>
+        </button>
+        <div class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======== HERO ======== -->
+  <section id="accueil">
+    <div id="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <div class="hero-badge"><i class="fas fa-leaf"></i> &nbsp; Cosmétiques 100% Naturels du Maroc</div>
+        <h1 class="hero-title">
+          La beauté naturelle
+          <em>commence ici</em>
+        </h1>
+        <p class="hero-sub">Des soins inspirés des trésors de la nature marocaine — argan, sidr, rose et bien plus — formulés sans compromis.</p>
+        <div class="hero-cta">
+          <a href="#produits" class="btn-hero">Découvrir nos produits</a>
+          <a href="#histoire" class="btn-hero-outline">Notre histoire</a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item"><strong class="stat-num">100%</strong><span class="stat-label">Naturel</span></div>
+        <div class="stat-item"><strong class="stat-num">+5k</strong><span class="stat-label">Clientes</span></div>
+        <div class="stat-item"><strong class="stat-num">15+</strong><span class="stat-label">Produits</span></div>
+      </div>
+      <div class="hero-scroll"><i class="fas fa-chevron-down"></i><span>Découvrir</span></div>
+    </div>
+  </section>
+
+  <!-- ======== MARQUEE ======== -->
+  <div class="marquee-strip">
+    <div class="marquee-track" id="marquee-track">
+      <span>Livraison gratuite dès 400 MAD <i class="fas fa-leaf"></i></span>
+      <span>100% Ingrédients Naturels <i class="fas fa-seedling"></i></span>
+      <span>Certifié Bio & Vegan <i class="fas fa-check-circle"></i></span>
+      <span>Fabrication Artisanale Marocaine <i class="fas fa-star"></i></span>
+      <span>Satisfait ou Remboursé 30 jours <i class="fas fa-shield-alt"></i></span>
+      <span>Livraison gratuite dès 400 MAD <i class="fas fa-leaf"></i></span>
+      <span>100% Ingrédients Naturels <i class="fas fa-seedling"></i></span>
+      <span>Certifié Bio & Vegan <i class="fas fa-check-circle"></i></span>
+      <span>Fabrication Artisanale Marocaine <i class="fas fa-star"></i></span>
+      <span>Satisfait ou Remboursé 30 jours <i class="fas fa-shield-alt"></i></span>
+    </div>
+  </div>
+
+  <!-- ======== PRODUITS EN VEDETTE ======== -->
+  <section id="produits">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Notre Sélection</p>
+        <h2 class="section-title">Produits en <em>Vedette</em></h2>
+      </div>
+      <div class="products-grid">
+
+        <!-- Produit 1 -->
+        <div class="product-card reveal">
+          <div class="product-img-wrap">
+            <span class="product-badge new">Bestseller</span>
+            <div class="product-actions">
+              <button class="action-btn" title="Favoris"><i class="far fa-heart"></i></button>
+              <button class="action-btn" title="Aperçu"><i class="far fa-eye"></i></button>
+            </div>
+            <img src="images/Sidr Poudre.png" alt="Sidr Poudre"/>
+          </div>
+          <div class="product-info">
+            <p class="product-category">Sidr Naturelles</p>
+            <div class="product-stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <h3 class="product-name">Sidr Poudre Pure BIO</h3>
+            <p class="product-desc">Sidr Poudre tamisé manuellement.</p>
+            <div class="product-footer">
+              <div class="product-price">10 CAD<span class="old">15 CAD</span></div>
+              <button class="add-cart-btn" data-name="Sidr Poudre BIO" data-price="10">Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Produit 2 -->
+        <div class="product-card reveal">
+          <div class="product-img-wrap">
+            <span class="product-badge">Nouveau</span>
+            <div class="product-actions">
+              <button class="action-btn" title="Favoris"><i class="far fa-heart"></i></button>
+              <button class="action-btn" title="Aperçu"><i class="far fa-eye"></i></button>
+            </div>
+            <img src="images/Huile de Réglisse.png" alt="Huile de Réglisse"/>
+          </div>
+          <div class="product-info">
+            <p class="product-category">Soins capillaires</p>
+            <div class="product-stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            </div>
+            <h3 class="product-name">Huile de Réglisse</h3>
+            <p class="product-desc">Huile de Réglisse naturelle extraite à froid, pour soins capillaires, nourrit et renforce les cheveux avec brillance et douceur.</p>
+            <div class="product-footer">
+              <div class="product-price">22 CAD</div>
+              <button class="add-cart-btn" data-name="Huile de Réglisse" data-price="22">Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Produit 3 -->
+        <div class="product-card reveal">
+          <div class="product-img-wrap">
+            <span class="product-badge promo">–33%</span>
+            <div class="product-actions">
+              <button class="action-btn" title="Favoris"><i class="far fa-heart"></i></button>
+              <button class="action-btn" title="Aperçu"><i class="far fa-eye"></i></button>
+            </div>
+            <img src="images/Créme visage.png" alt="Crème visage"/>
+          </div>
+          <div class="product-info">
+            <p class="product-category">Soins visage</p>
+            <div class="product-stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <h3 class="product-name">Crème visage à base de réglisse</h3>
+            <p class="product-desc">Crème visage à base de réglisse naturelle extraite à froid.</p>
+            <div class="product-footer">
+              <div class="product-price">12 CAD<span class="old">18 CAD</span></div>
+              <button class="add-cart-btn" data-name="Crème visage réglisse" data-price="12">Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Produit 4 -->
+        <div class="product-card reveal">
+          <div class="product-img-wrap">
+            <div class="product-actions">
+              <button class="action-btn" title="Favoris"><i class="far fa-heart"></i></button>
+              <button class="action-btn" title="Aperçu"><i class="far fa-eye"></i></button>
+            </div>
+            <img src="images/Gel nettoyant visage.png" alt="Gel nettoyant visage"/>
+          </div>
+          <div class="product-info">
+            <p class="product-category">Soins Visage</p>
+            <div class="product-stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <i class="fas fa-star"></i><i class="far fa-star"></i>
+            </div>
+            <h3 class="product-name">Gel nettoyant visage à base de Réglisse</h3>
+            <p class="product-desc">Gel nettoyant visage à base de réglisse naturelle extraite à froid.</p>
+            <div class="product-footer">
+              <div class="product-price">12 CAD</div>
+              <button class="add-cart-btn" data-name="Gel nettoyant visage Réglisse" data-price="12">Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Produit 5 -->
+        <div class="product-card reveal">
+          <div class="product-img-wrap">
+            <span class="product-badge new">Nouveau</span>
+            <div class="product-actions">
+              <button class="action-btn" title="Favoris"><i class="far fa-heart"></i></button>
+              <button class="action-btn" title="Aperçu"><i class="far fa-eye"></i></button>
+            </div>
+            <img src="images/Nila.png" alt="Nila"/>
+          </div>
+          <div class="product-info">
+            <p class="product-category">Soins du Corps et Visage</p>
+            <div class="product-stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <h3 class="product-name">Nila Bleu 100% naturelle</h3>
+            <p class="product-desc">Idéale pour illuminer le teint, réduire les taches et révéler une peau douce et éclatante.</p>
+            <div class="product-footer">
+              <div class="product-price">21 CAD</div>
+              <button class="add-cart-btn" data-name="Nila Bleu 100% naturelle" data-price="21">Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Produit 6 -->
+        <div class="product-card reveal">
+          <div class="product-img-wrap">
+            <span class="product-badge">Kit</span>
+            <div class="product-actions">
+              <button class="action-btn" title="Favoris"><i class="far fa-heart"></i></button>
+              <button class="action-btn" title="Aperçu"><i class="far fa-eye"></i></button>
+            </div>
+            <img src="images/Pack de produit a base de Réglisse.png" alt="Pack de produit à base de Réglisse"/>
+          </div>
+          <div class="product-info">
+            <p class="product-category">Packs Beauté</p>
+            <div class="product-stars">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            </div>
+            <h3 class="product-name">Pack de produits à base de Réglisse</h3>
+            <p class="product-desc">Pack de trois produits à base de Réglisse.</p>
+            <div class="product-footer">
+              <div class="product-price">39 CAD<span class="old">46 CAD</span></div>
+              <button class="add-cart-btn" data-name="Pack Réglisse" data-price="39">Ajouter</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div style="text-align:center;margin-top:48px;" class="reveal">
+        <a href="#" class="btn-outline">Voir tous les produits &nbsp;<i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== NOTRE HISTOIRE ======== -->
+  <section id="histoire">
+    <div class="container">
+      <div class="histoire-inner">
+        <div class="histoire-imgs reveal">
+          <div class="histoire-badge">
+            <strong>2018</strong>
+            <span>Fondée avec<br>passion</span>
+          </div>
+          <div class="histoire-img-main">
+            <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&auto=format&fit=crop" alt="Notre histoire"/>
+          </div>
+          <div class="histoire-img-float">
+            <img src="https://images.unsplash.com/photo-1473261422289-ece70cf625d3?w=400&auto=format&fit=crop" alt="Plantes naturelles"/>
+          </div>
+        </div>
+        <div class="histoire-text reveal">
+          <p class="section-label">Notre Histoire</p>
+          <h2 class="section-title" style="margin-bottom:28px;">Des racines <em>marocaines</em>, une vision moderne</h2>
+          <p>SONABIO est née d'une passion profonde pour les trésors naturels du Maroc. Fondée en 2018 par une équipe de femmes passionnées de bien-être, notre marque puise son inspiration dans les rituels ancestraux des hammams marocains et la sagesse des plantes médicinales.</p>
+          <blockquote>« La nature marocaine nous offre tout ce dont la peau a besoin. Notre rôle est de l'embouteiller avec soin et amour. »</blockquote>
+          <p>Chaque produit SONABIO est conçu en collaboration avec des herboristes locaux, en respectant les savoir-faire traditionnels tout en intégrant les avancées de la cosmétique naturelle contemporaine.</p>
+          <div class="histoire-values">
+            <div class="val-item"><i class="fas fa-check-circle"></i> Ingrédients traçables</div>
+            <div class="val-item"><i class="fas fa-check-circle"></i> Production artisanale</div>
+            <div class="val-item"><i class="fas fa-check-circle"></i> Emballages éco-responsables</div>
+            <div class="val-item"><i class="fas fa-check-circle"></i> Jamais testé sur animaux</div>
+          </div>
+          <div style="margin-top:36px;">
+            <a href="#" class="btn-primary">En savoir plus</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== POURQUOI NOUS ======== -->
+  <section id="pourquoi">
+    <div class="container">
+      <div class="section-header reveal" style="text-align:center;">
+        <p class="section-label">Nos engagements</p>
+        <h2 class="section-title">Pourquoi choisir <em>SONABIO</em> ?</h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card reveal">
+          <div class="feature-icon"><i class="fas fa-leaf"></i></div>
+          <h3 class="feature-title">100% Naturel</h3>
+          <p class="feature-desc">Chaque ingrédient est sélectionné pour sa pureté. Aucun additif synthétique, colorant ou parfum artificiel.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon"><i class="fas fa-ban"></i></div>
+          <h3 class="feature-title">Sans Produits Chimiques</h3>
+          <p class="feature-desc">Formules sans parabènes, sans sulfates, sans silicones. La pureté à l'état pur pour votre peau et vos cheveux.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon"><i class="fas fa-gem"></i></div>
+          <h3 class="feature-title">Qualité Premium</h3>
+          <p class="feature-desc">Des matières premières d'exception soigneusement sourcées auprès de producteurs marocains de confiance.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+          <h3 class="feature-title">Résultats Visibles</h3>
+          <p class="feature-desc">Nos clientes constatent des résultats dès les premières semaines. Peau lumineuse, cheveux nourris, hydratation intense.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== AVIS CLIENTS ======== -->
+  <section id="avis">
+    <div class="container">
+
+      <div class="avis-header reveal">
+        <div>
+          <p class="section-label">Ce que disent nos clientes</p>
+          <h2 class="section-title">Avis <em>authentiques</em></h2>
+          <div class="avis-divider"></div>
+          <div class="avis-rating-bar">
+            <span class="avis-rating-num">4.9</span>
+            <div class="avis-stars-wrap">
+              <div class="avis-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <span class="avis-total">Basé sur +5 000 avis vérifiés</span>
+            </div>
+          </div>
+        </div>
+        <span class="avis-verified-badge"><i class="fas fa-check-circle"></i> Avis vérifiés</span>
+      </div>
+
+      <div class="reviews-grid">
+
+        <div class="review-card reveal">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">L'huile de réglisse a transformé mes cheveux en deux semaines. Brillants, nourris et bien plus doux. Je le recommande à toutes mes amies !</p>
+          <div class="review-author">
+            <div class="review-avatar-initials">SA</div>
+            <div class="review-info">
+              <span class="review-name">Sara A.</span>
+              <span class="review-location">Montréal, QC</span>
+            </div>
+            <span class="review-badge">Achat vérifié</span>
+          </div>
+        </div>
+
+        <div class="review-card reveal">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">La crème visage à la réglisse est un coup de cœur. Peau plus lumineuse dès la première semaine. L'odeur est subtile et naturelle.</p>
+          <div class="review-author">
+            <div class="review-avatar-initials" style="background:#f0ede8;color:#5a4a2d;">NB</div>
+            <div class="review-info">
+              <span class="review-name">Nadia B.</span>
+              <span class="review-location">Paris, France</span>
+            </div>
+            <span class="review-badge">Achat vérifié</span>
+          </div>
+        </div>
+
+        <div class="review-card reveal">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+          </div>
+          <p class="review-text">Le pack réglisse est parfait. Gel, crème et huile fonctionnent ensemble à merveille. Livraison rapide et emballage très soigné.</p>
+          <div class="review-author">
+            <div class="review-avatar-initials" style="background:#eef0f8;color:#2d3a5a;">KM</div>
+            <div class="review-info">
+              <span class="review-name">Khadija M.</span>
+              <span class="review-location">Casablanca, Maroc</span>
+            </div>
+            <span class="review-badge">Achat vérifié</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Formulaire avis -->
+      <div class="avis-form-wrap reveal">
+        <p class="avis-form-title">Partagez votre <em>expérience</em></p>
+        <p class="avis-form-subtitle">Votre avis aide d'autres clientes à faire le bon choix.</p>
+        <div class="avis-form-grid">
+          <div class="avis-form-group">
+            <label>Votre nom</label>
+            <input type="text" id="nom" placeholder="Ex : Sara A." />
+          </div>
+          <div class="avis-form-group">
+            <label>Votre ville</label>
+            <input type="text" id="ville" placeholder="Ex : Montréal" />
+          </div>
+          <div class="avis-form-group">
+            <label>Note</label>
+            <div class="star-picker" id="star-picker">
+              <span class="star-pick" data-v="1">★</span>
+              <span class="star-pick" data-v="2">★</span>
+              <span class="star-pick" data-v="3">★</span>
+              <span class="star-pick" data-v="4">★</span>
+              <span class="star-pick" data-v="5">★</span>
+            </div>
+          </div>
+          <div class="avis-form-group full">
+            <label>Votre avis</label>
+            <textarea id="message" rows="4" placeholder="Décrivez votre expérience avec nos produits..."></textarea>
+          </div>
+        </div>
+        <button class="avis-submit-btn" onclick="window.envoyerAvis()">
+          <i class="fas fa-paper-plane"></i> Envoyer mon avis
+        </button>
+        <div class="avis-success" id="avis-success">
+          <i class="fas fa-check-circle"></i> Merci ! Votre avis sera publié après vérification. 💚
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======== GALERIE LIFESTYLE ======== -->
+  <section id="galerie">
+    <div class="container">
+      <div class="section-header reveal" style="text-align:center;">
+        <p class="section-label">Univers SONABIO</p>
+        <h2 class="section-title">L'art du <em>soin naturel</em></h2>
+      </div>
+      <div class="galerie-grid">
+        <div class="galerie-item reveal">
+          <img src="https://images.unsplash.com/photo-1488462237308-ecaa28b729d7?w=800&auto=format&fit=crop" alt="Galerie 1"/>
+          <div class="galerie-item-overlay"><i class="fas fa-expand-arrows-alt"></i></div>
+        </div>
+        <div class="galerie-item reveal">
+          <img src="https://images.unsplash.com/photo-1600428853876-fb4ae9a1f9fd?w=400&auto=format&fit=crop" alt="Galerie 2"/>
+          <div class="galerie-item-overlay"><i class="fas fa-expand-arrows-alt"></i></div>
+        </div>
+        <div class="galerie-item reveal">
+          <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400&auto=format&fit=crop" alt="Galerie 3"/>
+          <div class="galerie-item-overlay"><i class="fas fa-expand-arrows-alt"></i></div>
+        </div>
+        <div class="galerie-item reveal">
+          <img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=400&auto=format&fit=crop" alt="Galerie 4"/>
+          <div class="galerie-item-overlay"><i class="fas fa-expand-arrows-alt"></i></div>
+        </div>
+        <div class="galerie-item reveal">
+          <img src="https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=400&auto=format&fit=crop" alt="Galerie 5"/>
+          <div class="galerie-item-overlay"><i class="fas fa-expand-arrows-alt"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== NEWSLETTER ======== -->
+  <section id="newsletter">
+    <div class="container">
+      <div class="newsletter-inner reveal">
+        <p class="section-label">Rejoignez la communauté</p>
+        <h2 class="section-title">Offres exclusives & <em>conseils beauté</em></h2>
+        <p class="newsletter-sub">Abonnez-vous à notre newsletter et recevez 10% de réduction sur votre première commande, ainsi que nos conseils beauté naturelle chaque mois.</p>
+        <div class="newsletter-form">
+          <input type="email" class="newsletter-input" id="newsletter-email" placeholder="Votre adresse email..."/>
+          <button class="btn-primary" id="newsletter-btn">S'inscrire</button>
+        </div>
+        <div class="newsletter-success" id="newsletter-success">
+          <i class="fas fa-check-circle"></i> &nbsp; Bienvenue ! Votre code promo vous a été envoyé. 🌿
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======== FOOTER ======== -->
+  <footer id="footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- Brand -->
+        <div class="footer-brand">
+          <span class="logo">SONA<span>BIO</span></span>
+          <p>Nous croyons que la nature offre ce qu'il y a de meilleur pour prendre soin de soi. Chaque produit SONABIO est une invitation à redécouvrir les rituels ancestraux marocains.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link" title="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="#" class="social-link" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#produits">Boutique</a></li>
+            <li><a href="#histoire">Notre Histoire</a></li>
+            <li><a href="#avis">Avis Clients</a></li>
+          </ul>
+        </div>
+
+        <!-- Aide -->
+        <div class="footer-col">
+          <h4>Aide</h4>
+          <ul>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Livraison & Retours</a></li>
+            <li><a href="#">Politique de confidentialité</a></li>
+            <li><a href="#">Conditions d'utilisation</a></li>
+            <li><a href="#">Suivi de commande</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <div class="footer-contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>2305 Chem. Rockland, Montréal, QC H3P 3E9<br>Montréal, Canada</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-phone"></i>
+            <span>+1 514 663 7848</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-envelope"></i>
+            <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="33505c5d4752504773405c5d52515a5c1d5e52">[email&#160;protected]</a></span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-clock"></i>
+            <span>Lun–Sam : 9h – 18h</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer bottom -->
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2024 <span>SONABIO</span>. Tous droits réservés. Fait avec <span>♥</span> au Maroc.</p>
+        <div class="footer-pay">
+          <div class="pay-icon">VISA</div>
+          <div class="pay-icon">MC</div>
+          <div class="pay-icon">CMI</div>
+          <div class="pay-icon">COD</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======== BOUTON WHATSAPP ======== -->
+  <a href="https://wa.me/+15146637848" target="_blank" style="
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #25D366;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 9999;
+    text-decoration: none;
+  ">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="35" height="35" fill="white">
+      <path d="M16 0C7.163 0 0 7.163 0 16c0 2.822.736 5.469 2.027 7.77L0 32l8.476-2.004A15.93 15.93 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.27 13.27 0 0 1-6.766-1.848l-.485-.288-5.03 1.189 1.217-4.899-.317-.502A13.267 13.267 0 0 1 2.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.307-9.907c-.4-.2-2.366-1.168-2.733-1.301-.367-.133-.634-.2-.9.2-.267.4-1.033 1.301-1.267 1.567-.233.267-.467.3-.867.1-.4-.2-1.688-.622-3.216-1.984-1.188-1.06-1.99-2.368-2.223-2.768-.233-.4-.025-.616.175-.815.18-.178.4-.467.6-.7.2-.233.267-.4.4-.667.133-.267.067-.5-.033-.7-.1-.2-.9-2.167-1.233-2.967-.325-.78-.655-.674-.9-.686l-.767-.013c-.267 0-.7.1-1.067.5-.367.4-1.4 1.368-1.4 3.335s1.433 3.868 1.633 4.135c.2.267 2.82 4.305 6.833 6.036.955.412 1.7.658 2.281.842.958.305 1.831.262 2.52.159.769-.115 2.366-.967 2.7-1.9.333-.933.333-1.733.233-1.9-.1-.167-.367-.267-.767-.467z"/>
+    </svg>
+  </a>
+
+  <!-- ======== TIDIO CHAT ======== -->
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="//code.tidio.co/bsz72vjlkelmmcvvdwy8zltgrazssosl.js" async></script>
+
+  <!-- ======== FIREBASE (version unique 10.12.2) ======== -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBeVLRSqhbnZi41QQB61j8xiQYj0oI46_0",
+      authDomain: "sonabio-a23d4.firebaseapp.com",
+      projectId: "sonabio-a23d4",
+      storageBucket: "sonabio-a23d4.firebasestorage.app",
+      messagingSenderId: "157550884752",
+      appId: "1:157550884752:web:976e9c806f52c9d846a515"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    window.envoyerAvis = async function () {
+      const nom     = document.getElementById("nom").value.trim();
+      const ville   = document.getElementById("ville").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      if (!nom || !message) {
+        if (!nom)     document.getElementById("nom").classList.add("error");
+        if (!message) document.getElementById("message").classList.add("error");
+        setTimeout(() => {
+          document.getElementById("nom").classList.remove("error");
+          document.getElementById("message").classList.remove("error");
+        }, 2000);
+        return;
+      }
+
+      try {
+        await addDoc(collection(db, "avis"), {
+          nom: nom,
+          ville: ville,
+          message: message,
+          note: window.selectedStars || 0,
+          date: new Date()
+        });
+
+        document.getElementById("nom").value     = "";
+        document.getElementById("ville").value   = "";
+        document.getElementById("message").value = "";
+        window.selectedStars = 0;
+        document.querySelectorAll(".star-pick").forEach(el => el.classList.remove("active"));
+
+        const s = document.getElementById("avis-success");
+        s.style.display = "flex";
+        setTimeout(() => s.style.display = "none", 5000);
+
+      } catch (e) {
+        console.error("Erreur Firebase:", e);
+      }
+    };
+  </script>
+
+  <!-- ======== JAVASCRIPT PRINCIPAL ======== -->
+  <script>
+
+    /* NAVBAR SCROLL */
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    /* MOBILE MENU */
+    const hamburger   = document.getElementById('hamburger');
+    const mobileMenu  = document.getElementById('mobile-menu');
+    const mobileClose = document.getElementById('mobile-close');
+
+    hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
+    mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    document.querySelectorAll('.mob-link').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+
+    /* PANIER */
+    let cartCount = 0;
+    const cartCountEl = document.getElementById('cart-count');
+    const toast       = document.getElementById('toast');
+    const toastMsg    = document.getElementById('toast-msg');
+
+    function showToast(msg) {
+      toastMsg.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
+    document.querySelectorAll('.add-cart-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const name  = this.dataset.name;
+        const price = this.dataset.price;
+        cartCount++;
+        cartCountEl.textContent = cartCount;
+        const original = this.textContent;
+        this.textContent = '✓ Ajouté';
+        this.classList.add('added');
+        setTimeout(() => {
+          this.textContent = original;
+          this.classList.remove('added');
+        }, 1500);
+        showToast(`"${name}" ajouté au panier — ${price} CAD`);
+      });
+    });
+
+    document.getElementById('cart-btn').addEventListener('click', () => {
+      showToast(cartCount === 0
+        ? 'Votre panier est vide.'
+        : `Vous avez ${cartCount} article(s) dans votre panier.`
+      );
+    });
+
+    /* SCROLL REVEAL */
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => revealObserver.observe(el));
+
+    /* NAV ACTIVE STATE */
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(a => a.classList.remove('active'));
+          const match = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+          if (match) match.classList.add('active');
+        }
+      });
+    }, { threshold: 0.4 });
+    document.querySelectorAll('section[id]').forEach(s => sectionObserver.observe(s));
+
+    /* NEWSLETTER */
+    document.getElementById('newsletter-btn').addEventListener('click', () => {
+      const email   = document.getElementById('newsletter-email').value.trim();
+      const success = document.getElementById('newsletter-success');
+      if (!email || !email.includes('@')) {
+        document.getElementById('newsletter-email').style.borderColor = '#c0392b';
+        setTimeout(() => document.getElementById('newsletter-email').style.borderColor = '', 2000);
+        return;
+      }
+      document.getElementById('newsletter-email').value = '';
+      success.style.display = 'block';
+      setTimeout(() => success.style.display = 'none', 5000);
+    });
+
+    /* MARQUEE */
+    const track = document.getElementById('marquee-track');
+    track.innerHTML += track.innerHTML;
+
+    /* WISHLIST */
+    document.querySelectorAll('.action-btn').forEach(btn => {
+      if (btn.title === 'Favoris') {
+        btn.addEventListener('click', function () {
+          const icon = this.querySelector('i');
+          icon.classList.toggle('far');
+          icon.classList.toggle('fas');
+          icon.style.color = icon.classList.contains('fas') ? 'var(--gold)' : '';
+        });
+      }
+    });
+
+    /* ETOILES AVIS */
+    window.selectedStars = 0;
+    document.querySelectorAll('.star-pick').forEach(s => {
+      s.addEventListener('click', () => {
+        window.selectedStars = parseInt(s.dataset.v);
+        document.querySelectorAll('.star-pick').forEach(el => {
+          el.classList.toggle('active', parseInt(el.dataset.v) <= window.selectedStars);
+        });
+      });
+      s.addEventListener('mouseenter', () => {
+        document.querySelectorAll('.star-pick').forEach(el => {
+          el.classList.toggle('active', parseInt(el.dataset.v) <= parseInt(s.dataset.v));
+        });
+      });
+      s.addEventListener('mouseleave', () => {
+        document.querySelectorAll('.star-pick').forEach(el => {
+          el.classList.toggle('active', parseInt(el.dataset.v) <= window.selectedStars);
+        });
+      });
+    });
+
+  </script>
+
